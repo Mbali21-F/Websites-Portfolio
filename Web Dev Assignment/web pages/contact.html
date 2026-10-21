@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MAGEDE Beach Resort - Contact</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <nav>
+                    <ul>
+                        <li><a href="../index.html" class="nav-link">Home</a></li>
+                        <li><a href="about.html" class="nav-link">About</a></li>
+                        <li><a href="contact.html" class="active nav-link">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- CONTACT SECTION -->
+    <section id="contact" class="page">
+        <section class="contact-section">
+            <div class="container">
+                <h1>Get In Touch</h1>
+                <div class="contact-grid">
+                    <div class="contact-form">
+                        <h2 style="color: #FF6B35; margin-bottom: 1.5rem;">Send Us a Message</h2>
+
+                        <form id="contactForm" action="contact_process.php" method="POST">
+                            <div class="form-group">
+                                <label for="name">Full Name *</label>
+                                <input type="text" id="name" name="name" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="email">Email Address *</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="phone">Phone Number</label>
+                                <input type="tel" id="phone" name="phone">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="message">Message *</label>
+                                <textarea id="message" name="message" required></textarea>
+                            </div>
+
+                            <button type="submit" class="btn">Send Message</button>
+                        </form>
+                    </div>
+
+                    <div class="contact-info">
+                        <h2>Contact Information</h2>
+                        <div class="info-item">
+                            <h3>📍 Address</h3>
+                            <p>27 Table View<br/>Cape Town, South Africa</p>
+                        </div>
+
+                        <div class="info-item">
+                            <h3>📞 Phone</h3>
+                            <p>064 6101 215</p>
+                        </div>
+
+                        <div class="info-item">
+                            <h3>✉️ Email</h3>
+                            <p>info@magedebeachresort.co.za</p>
+                        </div>
+
+                        <div class="info-item">
+                            <h3>🕒 Reception Hours</h3>
+                            <p>24/7 - We're always here for you</p>
+                        </div>
+
+                        <div class="info-item">
+                            <h3>🌐 Follow Us</h3>
+                            <div class="social-links">
+                                <a href="https://www.facebook.com" title="Facebook">f</a>
+                                <a href="https://www.instagram.com" title="Instagram">📷</a>
+                                <a href="https://www.X.com" title="X">🐦</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </section>
+
+    <div class="popup-overlay" id="thankYouPopup">
+        <div class="popup-content">
+            <div class="popup-icon">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <h2>Thank You!</h2>
+            <p>Your message has been sent successfully. We'll get back to you within 24 hours.</p>
+            <p>We look forward to welcoming you to MAGEDE Beach Resort!</p>
+            <button class="popup-btn" id="closePopup">Close</button>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>MAGEDE Beach Resort</h3>
+                    <p>Your perfect coastal escape in the heart of Cape Town</p>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Contact</h3>
+                    <p>27 Table View, Cape Town</p>
+                    <p>Phone: 064 6101 215</p>
+                    <p>Email: info@magedebeachresort.co.za</p>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <a href="../index.html">Home</a>
+                    <a href="about.html">About Us</a>
+                    <a href="contact.html">Contact</a>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Follow Us</h3>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com" title="Facebook">f</a>
+                        <a href="https://www.instagramcom" title="Instagram">📷</a>
+                        <a href="https://www.facebook.com" title="X">🐦</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="copyright">
+                <p>&copy; 2025 MAGEDE Beach Resort. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get the form and popup elements
+            const contactForm = document.getElementById('contactForm');
+            const thankYouPopup = document.getElementById('thankYouPopup');
+            const closePopup = document.getElementById('closePopup');
+            
+            // Debugging: Check if elements are found
+            console.log('Form element:', contactForm);
+            console.log('Popup element:', thankYouPopup);
+            console.log('Close button:', closePopup);
+            
+            // Form submission handler
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                console.log('Form submitted!');
+                
+                // Basic form validation
+                const name = document.getElementById('name').value;
+                const email = document.getElementById('email').value;
+                const message = document.getElementById('message').value;
+                
+                console.log('Form values:', { name, email, message });
+                
+
+                if (name && email && message) {
+
+                    // Send form data to PHP
+                    const formData = new FormData(contactForm);
+                          fetch('contact_process.php', {
+                          method: 'POST',
+                          body: formData
+                          });
+
+                    // Show the thank you popup
+                    thankYouPopup.classList.add('active');
+
+                    // Reset the form 
+                    contactForm.reset();
+
+
+                    // Show the thank you popup
+                    thankYouPopup.classList.add('active');
+                    console.log('Popup should be visible now');
+                    
+                    // Reset the form
+                    contactForm.reset();
+
+
+
+                } else {
+                    alert('Please fill in all required fields.');
+                }
+
+
+            });
+            
+
+
+            // Close popup when close button is clicked
+            closePopup.addEventListener('click', function() {
+                thankYouPopup.classList.remove('active');
+            });
+            
+            // Close popup when clicking outside the content
+            thankYouPopup.addEventListener('click', function(e) {
+                if (e.target === thankYouPopup) {
+                    thankYouPopup.classList.remove('active');
+                }
+            });
+            
+            // Close popup with Escape key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    thankYouPopup.classList.remove('active');
+                }
+            });
+        });
+    </script>
+   
+</body>
+</html>
